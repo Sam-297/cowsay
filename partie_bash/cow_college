@@ -1,0 +1,28 @@
+#!/bin/bash
+if [ $# -ne 1 ]
+then 
+    echo "Nb d'arguments incorrect"
+    exit 1
+fi 
+
+n=0
+a=0
+b=1
+c=0
+
+while [ $c -le $1 ]
+do
+    clear
+    cowsay " $c "
+    sleep 1
+    n=$(expr $n + 1)
+    if [ $n -eq 1 ] #pour traiter le cas ou n = 1
+    then
+        c=1 
+    else
+        c=$(expr $a + $b)
+        a=$b
+        b=$c
+    fi  
+done
+

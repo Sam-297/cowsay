@@ -1,0 +1,86 @@
+#!/bin/bash
+if [ $# -ne 1 ]
+then 
+    echo "Nb d'arguments incorrect"
+    exit 1
+fi 
+
+if [ $1 -lt 2 ]
+then 
+    echo "Argument invalide"
+    exit 2
+fi
+
+n=2         #nombres de 2 à $1
+nb_prem=2   #nombres premiers de 2 à $1
+compteur=-1 #voir après
+
+while [ $n -le $1 ]
+do
+    if [ $n -eq 2 -o $compteur -eq 0 ] #traiter cas initial et cas o#!/bin/bash
+if [ $# -ne 1 ]
+then 
+    echo "Nb d'arguments incorrect"
+    exit 1
+fi 
+
+if [ $1 -lt 2 ]
+then 
+    echo "Argument invalide"
+    exit 2
+fi
+
+n=2         #nombres de 2 à $1
+nb_prem=2   #nombres premiers de 2 à $1
+compteur=-1 #voir après
+
+while [ $n -le $1 ]
+do
+    if [ $n -eq 2 -o $compteur -eq 0 ] #traiter cas initial et cas où n est premier
+    then 
+        clear
+        cowsay " $nb_prem "
+        sleep 1
+        nb_prem=$n
+    fi
+    n=$(expr $n + 1)
+    div=2                 #diviseur
+    compteur=0            #nombre de divisons où le reste est 0
+    while [ $div -lt $n ] #diviser n par (2 à n-1)
+    do
+        if [ $(expr $n % $div ) -eq 0 ]
+        then
+            compteur=$(expr $compteur + 1)
+            break
+        fi
+        div=$(expr $div + 1)
+    done
+    if [ $compteur -eq 0 ] #verifier si n est premier
+    then 
+        nb_prem=$n
+    fi
+done
+ n est premier
+    then 
+        clear
+        cowsay " $nb_prem "
+        sleep 1
+        nb_prem=$n
+    fi
+    n=$(expr $n + 1)
+    div=2                 #diviseur
+    compteur=0            #nombre de divisons où le reste est 0
+    while [ $div -lt $n ] #diviser n par (2 à n-1)
+    do
+        if [ $(expr $n % $div ) -eq 0 ]
+        then
+            compteur=$(expr $compteur + 1)
+            break
+        fi
+        div=$(expr $div + 1)
+    done
+    if [ $compteur -eq 0 ] #verifier si n est premier
+    then 
+        nb_prem=$n
+    fi
+done

@@ -1,0 +1,14 @@
+#!/bin/bash
+i=1;
+while [ $i -le 10 ]
+do  
+    clear
+    cowsay $i
+    sleep 1
+    if [ $i -eq 10 ]
+    then
+        clear
+        cowsay -T 'U ' $i
+    fi
+    i=$(expr $i + 1)
+done

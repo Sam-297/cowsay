@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# le premier argument et le deuxieme represente n et k pour faire les operations
+# il faut taper 'c' ou 'a' ou 'p' comme troisieme argument pour preciser l'operation
+
+factoriel(){
+    r=1
+    n=$1
+    while [ $n -gt 0 ]
+    do
+        r=$(($n * $r))
+        n=$(($n - 1))
+    done
+    echo $r
+}
+
+if [ $# -ne 3 ]
+then 
+    echo "Erreur: nb d'arguments incompatible"
+    exit 1
+fi
+
+n=$1
+k=$2
+if [ $n -lt $k ]
+then 
+    echo "Erreur: n < k , forme indefinie"
+    exit 2
+fi
+
+if [ $3 = "c" ] #calcule des combinaisons
+then 
+    r=$(expr $(factoriel $n) / $(expr $(factoriel $k) \* $(factoriel $(expr $n - $k))))
+elif [ $3 = "a" ] #calcule des arrangements
+then
+    r=$(expr $(factoriel $n) / $(factoriel $(expr $n - $k)))
+elif [ $3 = "p" ] #p-uplets
+then
+    r=$(($n**$k))
+fi
+cowsay "Le resultat avec n = $1 et k = $2 est : $r"

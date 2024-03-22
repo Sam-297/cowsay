@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Vérification du nombre d'arguments
+if [ "$#" -ne 1 ]; then
+    echo "Nb d'arguments"
+    exit 1
+fi
+
+# Récupération de l'opération arithmétique
+operation="$1"
+
+# Extraire les nombres et l'opérateur en utilisant cut
+a=$(echo "$operation" | cut -d ' ' -f 1)
+op=$(echo "$operation" | cut -d ' ' -f 2)
+b=$(echo "$operation" | cut -d ' ' -f 3)
+
+# Effectuer le calcul en fonction de l'opérateur
+if [ "$op" = "+" ]; then
+    result=$((a + b))
+elif [ "$op" = "-" ]; then
+    result=$((a - b))
+elif [ "$op" = "*" ]; then
+    result=$((a * b))
+elif [ "$op" = "/" ]; then
+    if [ "$b" -eq 0 ]; then
+        echo "Erreur: Division par zéro"
+        exit 1
+    else
+        result=$((a / b))
+    fi
+else
+    echo "Erreur: opérateur inconnu '$op'"
+    exit 1
+fi
+
+cowsay -e "$result" "$1"
